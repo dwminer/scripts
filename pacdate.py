@@ -9,7 +9,7 @@ def searchpkgs(pkgname):
 	searchpage = BeautifulSoup(searchpage)
 	bugtable = searchpage.find('table', id='tasklist_table').find('tbody')
 	bugreports = []
-	tagregex = re.compile("\[{}\] *".format(re.escape(pkgname)))
+	tagregex = re.compile("\[{}\] *".format(re.escape(pkgname)), re.I)
 	for report in bugtable.find_all('tr'):
 		entry = {}
 		reporttext = report.find('td', 'task_summary').get_text()
